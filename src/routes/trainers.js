@@ -34,7 +34,7 @@ router.delete('/:trainername', auth, async (req, res) => {
             trainername: req.params.trainername,
         });
         if (!trainer) {
-            return res.status(404).send();
+            return res.status(404).send('Trainer not found.');
         }
         res.send(trainer);
     } catch (error) {

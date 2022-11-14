@@ -20,7 +20,11 @@ router.post('/', auth, async (req, res) => {
         res.status(201);
         res.send(pokemon);
     } catch (error) {
-        res.status(400).send(error);
+        if (error.code == 11000) {
+            res.status(400).send('Pokemon must be unique.');
+        } else {
+            res.status(400).send(error);
+        }
     }
 });
 
@@ -30,7 +34,7 @@ router.delete('/:name', auth, async (req, res) => {
             name: req.params.name,
         });
         if (!pokemon) {
-            return res.status(404).send();
+            return res.status(404).send('Pokemon not found.');
         }
         res.send(pokemon);
     } catch (error) {
