@@ -23,6 +23,7 @@ app.use(express.json());
 app.use(require('./routes/index'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/trainers', require('./routes/trainers'));
+app.use('/api/pokemons', require('./routes/pokemons'));
 
 // Server
 const MONGO = {
