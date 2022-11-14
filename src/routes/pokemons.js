@@ -17,6 +17,7 @@ router.post('/', auth, async (req, res) => {
     try {
         const pokemon = new Pokemon(req.body);
         await pokemon.save();
+        res.status(201);
         res.send(pokemon);
     } catch (error) {
         res.status(400).send(error);

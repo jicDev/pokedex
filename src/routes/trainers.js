@@ -17,6 +17,7 @@ router.post('/', auth, async (req, res) => {
     try {
         const trainer = new Trainer(req.body);
         await trainer.save();
+        res.status(201);
         res.send(trainer);
     } catch (error) {
         if (error.code == 11000) {

@@ -9,6 +9,7 @@ router.post('/register', async (req, res) => {
         const trainer = new Trainer(req.body);
         await trainer.save();
         const token = await trainer.createAuthToken();
+        res.status(201);
         res.send({ trainer, token });
     } catch (error) {
         if (error.code == 11000) {
